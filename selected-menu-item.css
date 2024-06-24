@@ -1,0 +1,12 @@
+.stadium-selected-item-menu {
+    .active-menu-item,
+    .active-menu-item:hover {
+        background-color: var(--active-menu-item-background-color);
+        border-color: var(--active-menu-item-border-color);
+        cursor: default;
+        font-weight: var(--active-menu-item-font-weight);
+        span {
+            color: var(--active-menu-item-font-color);
+        }
+    }
+}
