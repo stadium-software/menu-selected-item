@@ -2,6 +2,10 @@
 
 Indicating to users which menu item is selected is good practice. It helps users to better understand where they are in the system. This is especially useful when menus consist only of top-level items. 
 
+
+https://github.com/stadium-software/menu-selected-item/assets/2085324/eedba632-1941-43e7-914d-7acd54fca4ae
+
+
 ## Version
 1.0 initial
 
