@@ -1,12 +1,12 @@
 .stadium-selected-item-menu {
     .active-menu-item,
     .active-menu-item:hover {
-        background-color: var(--active-menu-item-background-color);
-        border-color: var(--active-menu-item-border-color);
+        background-color: var(--active-menu-item-background-color, var(--CONTRAST-THEME-COLOR));
+        border-color: var(--active-menu-item-border-color, var(--SECONDARY-THEME-COLOR));
         cursor: default;
-        font-weight: var(--active-menu-item-font-weight);
+        font-weight: var(--active-menu-item-font-weight, normal);
         span {
-            color: var(--active-menu-item-font-color);
+            color: var(--active-menu-item-font-color, var(--SECONDARY-THEME-COLOR));
         }
     }
 }
