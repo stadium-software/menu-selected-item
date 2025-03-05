@@ -19,7 +19,7 @@ Check the *Enable Style Sheet8 checkbox in the application properties
 2. Add the input parameters below to the Global Script
    1. MenuClass
 3. Drag a JavaScript action into the script
-4. Add the Javascript below into the JavaScript code property
+4. Add the Javascript below unchanged into the JavaScript code property
 ```javascript
 /*Stadium Script 1.0 https://github.com/stadium-software/menu-selected-item*/
 let scope = this;
@@ -102,6 +102,7 @@ The CSS below is required for the correct functioning of the module. Some elemen
 1. Open the CSS file called [*selected-menu-item-variables.css*](selected-menu-item-variables.css) from this repo
 2. Adjust the variables in the *:root* element as you see fit
 3. Overwrite the file in the CSS folder of your application with the customised file
+4. Do not change any CSS other than the variables provided in the *-variables.css file
 
 ## CSS Upgrading
 To upgrade the CSS in this module, follow the [steps outlined in this repo](https://github.com/stadium-software/samples-upgrading)
