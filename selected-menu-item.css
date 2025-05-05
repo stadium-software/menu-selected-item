@@ -1,14 +1,38 @@
-.stadium-selected-item-menu {
-
+.container:not(.mobile) .stadium-selected-item-menu {
     .active-menu-item,
     .active-menu-item:hover {
         background-color: var(--active-menu-item-background-color, var(--MENU-ITEM-FONT-COLOR));
         border-color: var(--active-menu-item-border-color, var(--MENU-ITEM-FONT-COLOR));
         cursor: default;
         font-weight: var(--active-menu-item-font-weight, bold);
-
         span {
             color: var(--active-menu-item-font-color, var(--MENU-BACKGROUND-COLOR));
         }
     }
+}
+.container.mobile .stadium-selected-item-menu {
+    .nav a.active-menu-item,
+    .navbar-default .navbar-nav a.active-menu-item:hover, 
+    .nav > li > a.active-menu-item:hover,
+    .nav a.active-menu-item > .caret:after {
+        background-color: var(--active-menu-item-background-color, var(--MOBILE-MENU-SUB-ITEMS-FONT-COLOR));
+        border-color: var(--active-menu-item-border-color, var(--MOBILE-MENU-SUB-ITEMS-FONT-COLOR));
+        cursor: default;
+        font-weight: var(--active-menu-item-font-weight, bold);
+        span {
+            color: var(--active-menu-item-font-color, var(--MENU-BACKGROUND-COLOR));
+        }
+    }
+}
+/*DO NOT CHANGE BELOW THIS LINE*/
+html {
+	min-height: 100%;
+	font-size: 62.5%;
+	
+	.checkbox label,
+	.checkbox-inline label,
+	.radio label,
+	.radio-inline label {
+		font-size: var(--FORM-FONT-SIZE);
+	}
 }

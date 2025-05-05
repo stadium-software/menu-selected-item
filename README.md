@@ -7,7 +7,7 @@ https://github.com/stadium-software/menu-selected-item/assets/2085324/eedba632-1
 
 
 ## Version
-1.0 initial
+1.1 Mobile menu styling bug fix
 
 ## Setup
 
