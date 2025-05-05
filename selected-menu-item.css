@@ -4,22 +4,23 @@
         background-color: var(--active-menu-item-background-color, var(--MENU-ITEM-FONT-COLOR));
         border-color: var(--active-menu-item-border-color, var(--MENU-ITEM-FONT-COLOR));
         cursor: default;
-        font-weight: var(--active-menu-item-font-weight, bold);
-        span {
+        > span {
+            font-weight: var(--active-menu-item-font-weight, bold);
             color: var(--active-menu-item-font-color, var(--MENU-BACKGROUND-COLOR));
         }
     }
 }
 .container.mobile .stadium-selected-item-menu {
     .nav a.active-menu-item,
+    .nav .open li:is(.dropdown-submenu) a.menu-link.active-menu-item,
     .navbar-default .navbar-nav a.active-menu-item:hover, 
     .nav > li > a.active-menu-item:hover,
     .nav a.active-menu-item > .caret:after {
         background-color: var(--active-menu-item-background-color, var(--MOBILE-MENU-SUB-ITEMS-FONT-COLOR));
         border-color: var(--active-menu-item-border-color, var(--MOBILE-MENU-SUB-ITEMS-FONT-COLOR));
         cursor: default;
-        font-weight: var(--active-menu-item-font-weight, bold);
-        span {
+        > span {
+            font-weight: var(--active-menu-item-font-weight, bold);
             color: var(--active-menu-item-font-color, var(--MENU-BACKGROUND-COLOR));
         }
     }
