@@ -2,12 +2,12 @@
 
 Indicating to users which menu item is selected is good practice. It helps users to better understand where they are in the system. This is especially useful when menus consist only of top-level items. 
 
-
 https://github.com/stadium-software/menu-selected-item/assets/2085324/eedba632-1941-43e7-914d-7acd54fca4ae
-
 
 ## Version
 1.1 Mobile menu styling bug fix
+
+1.2 Integrated CSS with script
 
 ## Setup
 
@@ -21,7 +21,7 @@ Check the *Enable Style Sheet8 checkbox in the application properties
 3. Drag a JavaScript action into the script
 4. Add the Javascript below unchanged into the JavaScript code property
 ```javascript
-/*Stadium Script 1.0 https://github.com/stadium-software/menu-selected-item*/
+/*Stadium Script 1.2 https://github.com/stadium-software/menu-selected-item*/
 let scope = this;
 let menuClassInput = ~.Parameters.Input.MenuClass;
 if (typeof menuClassInput == "undefined") {
@@ -49,6 +49,7 @@ let findItemNested = (arr, itemId, nestingKey) => (
     if (item[nestingKey]) return findItemNested(item[nestingKey], itemId, nestingKey);
   }, null)
 );
+loadCSS();
 let ob = findItemNested(array, "/" + pageName, "items");
 let menuEls = menu.querySelectorAll(".nav.navbar-nav a");
 for (let i=0; i<menuEls.length; i++) {
@@ -72,6 +73,44 @@ function dmGet(control, p){
     }
     return getDMValues(control, p);
 }
+function loadCSS() {
+    let moduleID = "stadium-selected-menu-item";
+    if (!document.getElementById(moduleID)) {
+        let cssMain = document.createElement("style");
+        cssMain.id = moduleID;
+        cssMain.type = "text/css";
+        cssMain.textContent = `
+.container:not(.mobile) .stadium-selected-item-menu {
+    .active-menu-item,
+    .active-menu-item:hover {
+        background-color: var(--active-menu-item-background-color, var(--MENU-ITEM-FONT-COLOR));
+        border-color: var(--active-menu-item-border-color, var(--MENU-ITEM-FONT-COLOR));
+        cursor: default;
+        > span {
+            font-weight: var(--active-menu-item-font-weight, bold);
+            color: var(--active-menu-item-font-color, var(--MENU-BACKGROUND-COLOR));
+        }
+    }
+}
+.container.mobile .stadium-selected-item-menu {
+    .nav a.active-menu-item,
+    .nav .open li:is(.dropdown-submenu) a.menu-link.active-menu-item,
+    .navbar-default .navbar-nav a.active-menu-item:hover, 
+    .nav > li > a.active-menu-item:hover,
+    .nav a.active-menu-item > .caret:after {
+        background-color: var(--active-menu-item-background-color, var(--MOBILE-MENU-SUB-ITEMS-FONT-COLOR));
+        border-color: var(--active-menu-item-border-color, var(--MOBILE-MENU-SUB-ITEMS-FONT-COLOR));
+        cursor: default;
+        > span {
+            font-weight: var(--active-menu-item-font-weight, bold);
+            color: var(--active-menu-item-font-color, var(--MENU-BACKGROUND-COLOR));
+        }
+    }
+}
+        `;
+        document.head.appendChild(cssMain);
+    }
+}
 ```
 
 ### Page Setup
@@ -84,24 +123,7 @@ function dmGet(control, p){
    1. MenuClass: The classname of the menu control (e.g. stadium-selected-men-item)
 
 ## CSS
-The CSS below is required for the correct functioning of the module. Variables exposed in the [*selected-menu-item-variables.css*](selected-menu-item-variables.css) file can be [customised](#customising-css).
-
-### Before v6.12
-1. Create a folder called "CSS" inside of your Embedded Files in your application
-2. Drag the two CSS files from this repo [*selected-menu-item-variables.css*](selected-menu-item-variables.css) and [*selected-menu-item.css*](selected-menu-item.css) into that folder
-3. Paste the link tags below into the *head* property of your application
-```html
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/selected-menu-item.css">
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/selected-menu-item-variables.css">
-``` 
-
-### v6.12+
-1. Create a folder called "CSS" inside of your Embedded Files in your application
-2. Drag the CSS files from this repo [*selected-menu-item.css*](selected-menu-item.css) into that folder
-3. Paste the link tag below into the *head* property of your application
-```html
-<link rel="stylesheet" href="{EmbeddedFiles}/CSS/selected-menu-item.css">
-``` 
+Variables exposed in the [*selected-menu-item-variables.css*](selected-menu-item-variables.css) file can be [customised](#customising-css).
 
 ### Customising CSS
 1. Open the CSS file called [*selected-menu-item-variables.css*](selected-menu-item-variables.css) from this repo
@@ -113,8 +135,6 @@ The CSS below is required for the correct functioning of the module. Variables e
 <link rel="stylesheet" href="{EmbeddedFiles}/CSS/selected-menu-item-variables.css">
 ``` 
 6. Add the file to the "CSS" inside of your Embedded Files in your application
-
-**NOTE: Do not change any of the CSS in the 'selected-menu-item.css' file**
 
 ## Upgrading Stadium Repos
 Stadium Repos are not static. They change as additional features are added and bugs are fixed. Using the right method to work with Stadium Repos allows for upgrading them in a controlled manner. 
